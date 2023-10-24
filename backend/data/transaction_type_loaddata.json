@@ -1,0 +1,38 @@
+[
+  {
+      "model": "challenge_api.transactiontype",
+      "pk": 1,
+      "fields": {
+          "description": "Venda Produtor",
+          "nature": "Entrada",
+          "signal": "+"
+      }
+  },
+  {
+      "model": "challenge_api.transactiontype",
+      "pk": 2,
+      "fields": {
+          "description": "Venda Afiliado",
+          "nature": "Entrada",
+          "signal": "+"
+      }
+  },
+  {
+    "model": "challenge_api.transactiontype",
+    "pk": 3,
+    "fields": {
+        "description": "Comissão Paga",
+        "nature": "Saída",
+        "signal": "-"
+    }
+  },
+  {
+    "model": "challenge_api.transactiontype",
+    "pk": 4,
+    "fields": {
+        "description": "Comissão Recebida",
+        "nature": "Entrada",
+        "signal": "+"
+    }
+  } 
+]
