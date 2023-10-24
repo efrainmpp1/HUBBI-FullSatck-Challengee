@@ -26,3 +26,13 @@ def get_all_transaction(request):
     
     return Response(new_transaction_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['POST'])
+def massive_register_transaction(request):
+  transactions = request.data['transactions']
+  list_of_transactions = transactions
+  for transaction in list_of_transactions:
+    transaction = TransactionSerializer(data=transaction)
+    if transaction.is_valid():
+      transaction.save()
+    
+  return Response(transactions, status=status.HTTP_201_CREATED)
