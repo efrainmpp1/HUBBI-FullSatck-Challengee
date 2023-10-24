@@ -9,4 +9,4 @@ class TransactionTypeSerializer(serializers.ModelSerializer):
 class TransactionSerializer(serializers.ModelSerializer):
   class Meta:
     model = Transaction
-    fields = ['transaction_type_id' , 'date' , 'product_description' , 'amount_in_cents' , 'seller_name']
+    fields = ['id' , 'transaction_type_id' , 'date' , 'product_description' , 'amount_in_cents' , 'seller_name']
