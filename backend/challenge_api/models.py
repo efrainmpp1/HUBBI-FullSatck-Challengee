@@ -11,7 +11,6 @@ class TransactionType(models.Model):
         return self.description
     
 class Transaction(models.Model):
-    id = models.PositiveIntegerField(primary_key=True,auto_created=True)
     transaction_type_id = models.ForeignKey(TransactionType, on_delete=models.DO_NOTHING)
     date = models.DateTimeField()
     product_description = models.CharField(max_length=30)
