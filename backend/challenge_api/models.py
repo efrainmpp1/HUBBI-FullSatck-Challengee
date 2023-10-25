@@ -25,3 +25,8 @@ class Transaction(models.Model):
     
     def get_amount_in_reais(self):
         return self.amount_in_cents / 100.0
+
+    def get_transaction_type_description(self):
+        if self.transaction_type_id:
+            return self.transaction_type_id.description
+        return "No TransactionType associated" 
