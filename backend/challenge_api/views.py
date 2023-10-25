@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.db.models import Sum
 from .models import TransactionType , Transaction
 from.serializers import TransactionTypeSerializer , TransactionSerializer
 from rest_framework.decorators import api_view
@@ -13,9 +14,11 @@ def get_all_transaction_types(request):
 @api_view(['GET','POST'])
 def get_all_transaction(request):
   if request.method == 'GET' :
-    transactions = Transaction.objects.all()
+    transactions = Transaction.objects.all().reverse()
     transactions_serializer = TransactionSerializer(transactions,many=True)
-    return JsonResponse(transactions_serializer.data , safe=False)
+    total_amount_in_cents = Transaction.objects.aggregate(total_amount_in_cents=Sum('amount_in_cents'))
+    return JsonResponse({ "transactions" : transactions_serializer.data , 
+    "total_amount_in_cents" : total_amount_in_cents['total_amount_in_cents']} , safe=False)
   
   if request.method == 'POST':
     new_transaction = request.data
