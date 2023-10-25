@@ -9,5 +9,7 @@ export async function getAllTransactions() {
 }
 
 export async function massiveRegisterTransactions(list_transactions) {
-  return api.post("/massive_register_transactions", list_transactions);
+  const object_transactions = { transactions: list_transactions };
+  console.log(object_transactions);
+  return api.post("/massive_register_transactions/", object_transactions);
 }
