@@ -8,8 +8,13 @@ class TransactionTypeSerializer(serializers.ModelSerializer):
 
 class TransactionSerializer(serializers.ModelSerializer):
   transaction_type_description = serializers.SerializerMethodField()
+  date_brl_format = serializers.SerializerMethodField()
+
   def get_transaction_type_description(self, obj):
-        return obj.get_transaction_type_description()
+    return obj.get_transaction_type_description()
+  
+  def get_date_brl_format(self , obj):
+    return obj.get_date_brl_format()
   class Meta:
     model = Transaction
-    fields = [ 'transaction_type_id' , 'date' , 'product_description' , 'amount_in_cents' , 'seller_name' , 'transaction_type_description']
+    fields = [ 'transaction_type_id' , 'transaction_type_description' , 'date' , 'date_brl_format' , 'product_description' , 'amount_in_cents' , 'seller_name']

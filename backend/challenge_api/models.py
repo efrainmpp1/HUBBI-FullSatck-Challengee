@@ -1,5 +1,6 @@
 from django.db import models
 from dateutil.parser import parse
+from datetime import datetime
 
 class TransactionType(models.Model):
     id = models.PositiveSmallIntegerField(primary_key=True)
@@ -22,6 +23,11 @@ class Transaction(models.Model):
 
     def set_date(self, data_string):
         self.date = parse(data_string)
+    
+    def get_date_brl_format(self):
+        date_time = self.date
+        data_time_format = date_time.strftime("%d/%m/%Y às %H:%M:%S")
+        return data_time_format
     
     def get_amount_in_reais(self):
         return self.amount_in_cents / 100.0
