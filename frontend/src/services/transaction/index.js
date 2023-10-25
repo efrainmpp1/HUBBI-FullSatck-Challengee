@@ -10,3 +10,7 @@ export const getAllTransactions = useMock
 export const getAllTransactionTypes = useMock
   ? mock.getAllTransactionTypes
   : integration.getAllTransactionTypes;
+
+export const massiveRegisterTransactions = useMock
+  ? mock.massiveRegisterTransactions
+  : integration.massiveRegisterTransactions;
