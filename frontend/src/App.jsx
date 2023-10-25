@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FileUploader from "./components/Upload";
 import Button from "./components/Button";
+import { massiveRegisterTransactions } from "./services/transaction";
 import "./App.css";
 
 function App() {
@@ -32,12 +33,27 @@ function App() {
     setTransactions(data);
   };
 
+  const handleSubmit = async (data) => {
+    try {
+      await massiveRegisterTransactions(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <h1>Hubbi Challenge</h1>
       <div className="card">
         <FileUploader onFileUpload={handleFileUpload} />
-        {transactions.length > 0 ? <Button label="Enviar Transações" /> : <></>}
+        {transactions.length > 0 ? (
+          <Button
+            onClick={() => handleSubmit(transactions)}
+            label="Enviar Transações"
+          />
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
