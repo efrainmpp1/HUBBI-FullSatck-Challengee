@@ -1,7 +1,11 @@
+import { useState } from "react";
 import FileUploader from "./components/Upload";
+import Button from "./components/Button";
 import "./App.css";
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
+
   const handleFileUpload = (fileContent) => {
     // Divide o conteúdo do arquivo em linhas
     const lines = fileContent.split("\n");
@@ -25,6 +29,7 @@ function App() {
       );
 
     console.log(data);
+    setTransactions(data);
   };
 
   return (
@@ -32,6 +37,7 @@ function App() {
       <h1>Hubbi Challenge</h1>
       <div className="card">
         <FileUploader onFileUpload={handleFileUpload} />
+        {transactions.length > 0 ? <Button label="Enviar Transações" /> : <></>}
       </div>
     </>
   );
