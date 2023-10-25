@@ -1,0 +1,16 @@
+[
+  {
+    "transaction_type_id": 1,
+    "date": "2022-01-15T22:20:30Z",
+    "product_description": "CURSO DE BEM-ESTAR",
+    "amount_in_cents": 12750,
+    "seller_name": "JOSE CARLOS"
+  },
+  {
+    "transaction_type_id": 1,
+    "date": "2022-01-15T22:20:30Z",
+    "product_description": "CURSO DE BEM-ESTAR",
+    "amount_in_cents": 12750,
+    "seller_name": "JOSE CARLOS"
+  }
+]
