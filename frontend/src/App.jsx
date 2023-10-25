@@ -17,6 +17,7 @@ function App() {
       }))
       .filter(
         (item) =>
+          item.transaction_type_id ||
           item.date ||
           item.product_description ||
           item.amount_in_cents ||
