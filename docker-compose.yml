@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  api:
+    build: 
+      context: ./backend/
+      dockerfile: Dockerfile
+    container_name: hubbi_challenge_api
+    restart: always
+    ports:
+      - 8000:8000
+    networks:
+      - backend
+    
+  frontend:
+    build: 
+      context: ./frontend/
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    depends_on:
+      - api
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: "bridge"
+
