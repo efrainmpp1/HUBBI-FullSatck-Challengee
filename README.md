@@ -10,7 +10,7 @@ Web interface for uploading .txt files containing product sales transactions, no
 - [ X ] Have a screen (via a form) to upload the file
 - [ X ] Parse the received file, normalize the data, and store it in a relational database, following the file interpretation definitions
 - [ X ] Display the list of imported product transactions by producer/affiliate, with a totalizer of the transaction values
-- [ ] Implement error handling on the backend and report friendly error messages on the frontend.
+- [ X ] Implement error handling on the backend and report friendly error messages on the frontend.
 
 #### **Non-Functional Requirements**
 - [ X ] The application should be easy to set up and run, compatible with Unix environments. You should use only free or open-source libraries.
