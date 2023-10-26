@@ -28,13 +28,15 @@ Web interface for uploading .txt files containing product sales transactions, no
 
 ## Technologies Used
 #### **FrontEnd**
-- React JS (JavaScript)
+- NodeJs v18.14.0
+- React JS (Framework with Javascript)
 - Vite
 - Yarn (Package Manager)
 - AXios (API connection)
 
 #### **BackEnd**
-- Django (Python)
+- Python 3.10.1
+- Django
 - Django-Rest
 - Django ORM
 
@@ -46,14 +48,35 @@ Web interface for uploading .txt files containing product sales transactions, no
 
 ## How to Run
 
-#### **With Docker-Compose**
-If your machine has [Docker](https://docs.docker.com/get-docker/) installed, you can run the application via Docker Compose. Simply follow these steps:
-
 - Clone this repository
 - Access the repository folder via the terminal
+
+### **With Docker-Compose**
+If your machine has [Docker](https://docs.docker.com/get-docker/) installed, you can run the application via Docker Compose.
+
 - Run the command `docker-compose up -d`
 
 After a few seconds of building, the services will be available for use. The Backend is accessible at [http://localhost:8000/](http://localhost:8000/), while the FrontEnd is accessible at [http://localhost:5173/](http://localhost:5173/).
+
+### **Normal Way**
+
+#### Frontend
+- Enter into frontend folder ```cd frontend```
+- Run ```yarn``` to install node_modules and dependencies
+- Run ```yarn dev``` to run project
+
+FrontEnd is accessible at [http://localhost:5173/](http://localhost:5173/).
+
+#### Backend
+- Enter into frontend folder ```cd backend```
+- Create a virtual environment called venv with ```virtualenv venv```
+- Activate venv : ```source venv/bin/activate```
+- Install projects libs and dependencies```pip3 install -r requirements.txt```
+- Run ```python3 manage.py makemigrations challenge_api```
+- Run ```python3 manage.py migrate```
+- Run ```python3 manage.py runserver```
+
+The Backend is accessible at [http://localhost:8000/](http://localhost:8000/)
 
 ## Documentation
 
