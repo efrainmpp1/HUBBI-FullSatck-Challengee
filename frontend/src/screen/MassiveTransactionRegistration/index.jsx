@@ -17,24 +17,35 @@ function MassiveTransactionRegistration() {
     // Divide o conteúdo do arquivo em linhas
     const lines = fileContent.split("\n");
 
-    // Cria uma lista de objetos com as chaves especificadas, ignorando as linhas em branco
+    let struct_is_ok = true;
+
     const data = lines
-      .map((line) => ({
-        transaction_type_id: parseInt(line[0]),
-        date: line.slice(1, 26).trim(),
-        product_description: line.slice(26, 56).trim(),
-        amount_in_cents: parseInt(line.slice(56, 66).trim()),
-        seller_name: line.slice(66, 86).trim(),
-      }))
-      .filter(
-        (item) =>
-          item.transaction_type_id ||
-          item.date ||
-          item.product_description ||
-          item.amount_in_cents ||
-          item.seller_name
-      );
-    setTransactions(data);
+      .map((line) => {
+        if ((line.length > 1) & (line.length < 86)) {
+          struct_is_ok = false;
+          return null;
+        }
+        return {
+          transaction_type_id: parseInt(line.slice(0, 1)),
+          date: line.slice(1, 26).trim(),
+          product_description: line.slice(26, 56).trim(),
+          amount_in_cents: parseInt(line.slice(56, 66).trim()),
+          seller_name: line.slice(66, 86).trim(),
+        };
+      })
+      .filter(Boolean); // Remove null entries
+
+    if (!struct_is_ok) {
+      // Check if the line doesn't have enough characters for the expected structure
+      setNotificationStatus({
+        severity: "error",
+        message:
+          "Estrutura do arquivo inválida. Favor revisar arquivo de entrada para seguir o padrão estabelecido.",
+      });
+      setOpenNotification(true);
+    } else {
+      setTransactions(data);
+    }
   };
 
   const handleSubmit = async (data) => {

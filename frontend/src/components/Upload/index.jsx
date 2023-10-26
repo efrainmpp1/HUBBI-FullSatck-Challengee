@@ -18,7 +18,10 @@ const FileUploader = ({ onFileUpload = () => {} }) => {
     [onFileUpload]
   );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: ".txt",
+  });
 
   return (
     <div
