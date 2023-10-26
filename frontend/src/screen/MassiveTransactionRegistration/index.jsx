@@ -21,7 +21,8 @@ function MassiveTransactionRegistration() {
 
     const data = lines
       .map((line) => {
-        if ((line.length > 1) & (line.length < 68)) {
+        if (line.length == 0) return null;
+        else if ((line.length >= 1) & (line.length < 68)) {
           struct_is_ok = false;
           return null;
         }
