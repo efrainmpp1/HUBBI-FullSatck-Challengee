@@ -1,0 +1,10 @@
+div-card { 
+  display: "flex";
+  justify-content: space-between;
+}
+
+card { 
+  flex: 1;
+  margin-right: "30px";
+}
+
