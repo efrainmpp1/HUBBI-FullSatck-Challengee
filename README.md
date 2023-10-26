@@ -80,7 +80,7 @@ The Backend is accessible at [http://localhost:8000/](http://localhost:8000/)
 
 ## Documentation
 
-The project's documentation can be found [here](./docs/README.md)
+The project's documentation can be found [here](./docs/)
 
 
 > This is a challenge by [Hubbi](https://app.hubbi.app/)
