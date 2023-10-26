@@ -31,11 +31,28 @@ def get_all_transaction(request):
 
 @api_view(['POST'])
 def massive_register_transaction(request):
-  transactions = request.data['transactions']
-  list_of_transactions = transactions
-  for transaction in list_of_transactions:
-    transaction = TransactionSerializer(data=transaction)
-    if transaction.is_valid():
-      transaction.save()
-    
-  return Response(transactions, status=status.HTTP_201_CREATED)
+    try:
+        transactions = request.data['transactions']
+        list_of_transactions = transactions
+
+        for transaction_data in list_of_transactions:
+            # Deserialize and validate the transaction data
+            transaction_serializer = TransactionSerializer(data=transaction_data)
+            
+            if transaction_serializer.is_valid():
+                # Save the transaction if it's valid
+                transaction_serializer.save()
+            else:
+                # Handle invalid transaction data
+                return Response(
+                    {'message': 'Invalid transaction data', 'errors': transaction_serializer.errors},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+        return Response(transactions, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        # Handle other exceptions or errors here
+        return Response(
+            {'message': 'An error occurred', 'error_details': str(e)},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
