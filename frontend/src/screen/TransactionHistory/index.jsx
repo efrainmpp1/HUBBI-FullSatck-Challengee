@@ -19,6 +19,7 @@ export default function TransactionHistory() {
 
   return (
     <>
+      <h1>Histórico de Transações</h1>
       <SpanningTable
         rows={transactions.transactions}
         total_amount={transactions.total_amount_in_cents}
