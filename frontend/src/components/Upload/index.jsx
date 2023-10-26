@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import "./style.css";
 
 // eslint-disable-next-line react/prop-types
 const FileUploader = ({ onFileUpload = () => {} }) => {
