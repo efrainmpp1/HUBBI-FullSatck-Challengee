@@ -62,14 +62,13 @@ function MassiveTransactionRegistration() {
     <>
       <h1>Cadastro Massivo de Transações</h1>
       <div>
-        <FileUploader onFileUpload={handleFileUpload} />
         {transactions.length > 0 ? (
           <Button
             onClick={() => handleSubmit(transactions)}
             label="Enviar Transações"
           />
         ) : (
-          <></>
+          <FileUploader onFileUpload={handleFileUpload} />
         )}
       </div>
       <Notification
