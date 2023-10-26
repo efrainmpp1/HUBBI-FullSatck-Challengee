@@ -1,10 +1,10 @@
 import { useState } from "react";
-import FileUploader from "./components/Upload";
-import Button from "./components/Button";
-import { massiveRegisterTransactions } from "./services/transaction";
-import "./App.css";
+import FileUploader from "../../components/Upload";
+import Button from "../../components/Button";
+import { massiveRegisterTransactions } from "../../services/transaction";
+import "./style.css";
 
-function App() {
+function MassiveTransactionRegistration() {
   const [transactions, setTransactions] = useState([]);
 
   const handleFileUpload = (fileContent) => {
@@ -28,14 +28,13 @@ function App() {
           item.amount_in_cents ||
           item.seller_name
       );
-
-    console.log(data);
     setTransactions(data);
   };
 
   const handleSubmit = async (data) => {
     try {
       await massiveRegisterTransactions(data);
+      setTransactions([]);
     } catch (error) {
       console.log(error);
     }
@@ -43,8 +42,8 @@ function App() {
 
   return (
     <>
-      <h1>Hubbi Challenge</h1>
-      <div className="card">
+      <h1>Teste</h1>
+      <div>
         <FileUploader onFileUpload={handleFileUpload} />
         {transactions.length > 0 ? (
           <Button
@@ -59,4 +58,4 @@ function App() {
   );
 }
 
-export default App;
+export default MassiveTransactionRegistration;
