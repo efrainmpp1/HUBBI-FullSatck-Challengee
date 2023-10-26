@@ -17,4 +17,4 @@ class TransactionSerializer(serializers.ModelSerializer):
     return obj.get_date_brl_format()
   class Meta:
     model = Transaction
-    fields = [ 'transaction_type_id' , 'transaction_type_description' , 'date' , 'date_brl_format' , 'product_description' , 'amount_in_cents' , 'seller_name']
+    fields = [ 'id' ,'transaction_type_id' , 'transaction_type_description' , 'date' , 'date_brl_format' , 'product_description' , 'amount_in_cents' , 'seller_name']
