@@ -1,6 +1,5 @@
 from django.db import models
 from dateutil.parser import parse
-from datetime import datetime
 
 class TransactionType(models.Model):
     id = models.PositiveSmallIntegerField(primary_key=True)
